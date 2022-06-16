@@ -31,11 +31,12 @@ public class AddPhoneServlet extends HttpServlet {
             String brand = req.getParameter("brand");
             String description = req.getParameter("description");
             double price = Double.parseDouble(req.getParameter("price"));
-            Phone phone = new Phone();
-            phone.setName(name);
-            phone.setDescription(description);
-            phone.setPrice(price);
-            phone.setBrand(brand);
+            Phone phone = Phone.PhoneBuilder.aPhone()
+                    .withName(name)
+                    .withBrand(brand)
+                    .withDescription(description)
+                    .withPrice(price)
+                    .build();
             if (phone.isValid()) {
                 boolean result = phoneModel.save(phone);
                 if (result) {
@@ -47,12 +48,13 @@ public class AddPhoneServlet extends HttpServlet {
                         throw new RuntimeException(e);
                     }
                 }
-            }else {
+            } else {
                 req.setAttribute("phone", phone);
                 req.setAttribute("errors", phone.getErrors());
                 req.getRequestDispatcher("/addphone.jsp").forward(req, resp);
             }
         } catch (Exception e) {
+            System.err.println(e.getMessage());
             throw new RuntimeException(e);
         }
     }

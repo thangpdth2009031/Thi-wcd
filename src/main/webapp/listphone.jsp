@@ -32,6 +32,7 @@
         <th>Id</th>
         <th>Name</th>
         <th>Price</th>
+        <th>Brand</th>
         <th>Description</th>
     </tr>
     <%
@@ -43,6 +44,7 @@
             <%= phone.getName() %>
         </td>
         <td><%= phone.getPrice() %></td>
+        <td><%= phone.getBrand() %></td>
         <td><%= phone.getDescription() %>
         </td>
     </tr>

@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class Phone {
     private int id;
-    private String name;
+    private String name = "";
     private String brand;
     private double price;
-    private String description;
+    private String description = "";
 
     public Phone() {
     }
@@ -39,7 +39,7 @@ public class Phone {
             errors.put("name", "Please enter name");
         }
         if (description == null || description.length() == 0) {
-            errors.put("name", "Please enter description");
+            errors.put("description", "Please enter description");
         }
         if (price < 0) {
             errors.put("price", "The price of the dish must be greater than 0");
